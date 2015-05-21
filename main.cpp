@@ -1,11 +1,12 @@
 #include <iostream>
 #include <iomanip>
-#include <stdlib.h>
+#include "eigen-eigen-10219c95fe65/Eigen/Eigen"
 
 void print(float f);
 void add(float* f);
 
 using namespace std;
+using Eigen::MatrixXcf;
 
 int main() {
 /*
@@ -17,7 +18,7 @@ int main() {
         cout << i << ". ";
         add(&lf);
         print(lf);
-    }*/
+    }
 
     // random float generation
     //This will generate a number from 0.0 to 1.0, inclusive.
@@ -31,6 +32,13 @@ int main() {
     float LO = 0.f;
     float HI = 4.f;
     float r3 = LO + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(HI-LO)));
+    */
+
+    MatrixXcf comp1 = MatrixXcf::Random(3,3);
+    MatrixXcf comp2 = MatrixXcf::Random(3,3);
+    MatrixXcf sum = comp1.colwise().sum();
+
+    cout << sum;
 
 
     return 0;
